@@ -1,0 +1,15 @@
+<h2>Films</h2>
+<div>
+  Company
+  <select #filter (change)="changeFilter(filter.value)">
+    <option *ngFor="let co of companies">{{co}}</option>
+  </select>
+</div>
+<div>
+  <div *ngFor="let film of filteredFilms">
+    <hr>
+    <a [href]="film.url" target="_blank" class="entry"><img [src]="film.image" [alt]="film.name"></a>
+    <a [href]="film.url" target="_blank" class="entry">Name: {{film.name}}</a>
+    <a [href]="film.url" target="_blank" class="entry">Company: {{film.company}}</a>
+  </div>
+</div>
