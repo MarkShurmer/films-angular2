@@ -1,15 +1,17 @@
-# FilmsAngular22
+# Films Angular2
+Displays a list of films, using images fro imdb.com
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.22-1.
+## Pre-requisites
+1. node - this was tested with v7.2.0
+1. angular-cli - install using npm i -g angular-cli
+2. yarn - optional - install using npm i -g yarn
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## installation
+either run `yarn` or `npm i`
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## running dev server
+Run `ng serve`. Navigate to `http://localhost:4200/`.
 
 ## Running unit tests
-
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 

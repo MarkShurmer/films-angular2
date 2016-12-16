@@ -1,6 +1,6 @@
 <h2>Films</h2>
 <div>
-  Company
+  Filter by Company
   <select #filter (change)="changeFilter(filter.value)">
     <option *ngFor="let co of companies">{{co}}</option>
   </select>

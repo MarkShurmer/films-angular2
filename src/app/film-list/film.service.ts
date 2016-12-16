@@ -9,13 +9,13 @@ export class FilmService {
   private companies: Array<string>;
 
   constructor(private http: Http) {
-
   }
 
   subscribeToFilms(): Observable<Film[]> {
     return this.http.get('app/data/films.json')
       .map((resp: Response) => {
         let films: Array<Film> = resp.json() || {};
+        // now we have films , build companies
         this.buildCompanies(films);
         return films;
       }) // we want the json served

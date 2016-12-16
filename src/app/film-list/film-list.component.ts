@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FilmService} from './film.service';
 import {Film} from './film';
-import {distinct} from 'rxjs/operator/distinct';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-film-list',
