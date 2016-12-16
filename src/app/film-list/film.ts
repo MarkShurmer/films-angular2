@@ -1,3 +1,4 @@
+// holds our film data
 export class Film {
   name: string;
   company: string;

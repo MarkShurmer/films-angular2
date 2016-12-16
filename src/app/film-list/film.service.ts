@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs';
 import {Film} from './film';
-import {distinct} from 'rxjs/operator/distinct';
+
 
 @Injectable()
 export class FilmService {
@@ -15,7 +15,7 @@ export class FilmService {
   subscribeToFilms(): Observable<Film[]> {
     return this.http.get('app/data/films.json')
       .map((resp: Response) => {
-      let films: Array<Film> = resp.json() || {};
+        let films: Array<Film> = resp.json() || {};
         this.buildCompanies(films);
         return films;
       }) // we want the json served
@@ -27,9 +27,9 @@ export class FilmService {
   }
 
   private buildCompanies(filmData: Array<Film>): void {
+    // get all distinct comapnies
     let allCompanies = filmData.map(f => f.company);
     this.companies = allCompanies.filter((x, i, a) => a.indexOf(x) == i);
-    //this.companies = Observable.of(allCompanies).distinct().toArray();
   }
 
   private errorHandler(error: Response | any) {

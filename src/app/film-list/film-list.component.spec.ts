@@ -1,17 +1,16 @@
 /* tslint:disable:no-unused-variable */
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {DebugElement} from '@angular/core';
 
 import {FilmListComponent} from './film-list.component';
 import {FilmService} from './film.service';
 import {Observable} from 'rxjs';
 import {Film} from './film';
 
-class MockFilmService {
+class MockFilmService extends FilmService {
   subscribeToFilms(): Observable<Film[]> {
     return Observable.of([new Film('Banana', 'London pictures', 'http://1', 'http://2')]);
   }
+
   getCompanies(): Array<string> {
     return ['Pixar'];
   }
@@ -31,20 +30,30 @@ describe('FilmListComponent', () => {
   }));
 
   beforeEach(() => {
+
     fixture = TestBed.createComponent(FilmListComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
     mockFilmService = fixture.debugElement.injector.get(FilmService);
+    // spy on mocks so we know they have been called
+    spyOn(mockFilmService, 'subscribeToFilms').and.callThrough();
+    spyOn(mockFilmService, 'getCompanies').and.callThrough();
+
+    // connects everything
+    fixture.detectChanges();
   });
 
   it('should create component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call subscribe to films', () => {
+    // done in ngInit
     expect(mockFilmService.subscribeToFilms).toHaveBeenCalled();
   });
 
   it('should use service when asked for films', () => {
-
-    expect(component).toBeTruthy();
+    // done in ngInit
+    expect(mockFilmService.getCompanies).toHaveBeenCalled();
   });
 
 });
