@@ -17,13 +17,27 @@ export class FilmService {
         let films: Array<Film> = resp.json() || {};
         // now we have films , build companies
         this.buildCompanies(films);
-        return films;
+        // sort using name comparator
+        return films.sort(this.nameComparator);
       }) // we want the json served
       .catch(this.errorHandler); // deal with errors
   }
 
   getCompanies(): Array<string> {
     return this.companies;
+  }
+
+  private nameComparator(lhs: Film, rhs: Film) {
+    // do simple comparisons
+    if(lhs.name < rhs.name) {
+      return -1;
+    }
+
+    if(lhs.name > rhs.name) {
+      return 1;
+    }
+
+    return 0;
   }
 
   private buildCompanies(filmData: Array<Film>): void {
